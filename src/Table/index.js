@@ -1,4 +1,4 @@
-
+import './style.css'
 const Table=()=>(
     <table className="priceTable">
         <thead className="priceTable__thead">
