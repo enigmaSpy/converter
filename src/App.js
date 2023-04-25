@@ -1,16 +1,14 @@
 import Header from "./Header";
 import Form from "./Form";
 import Table from "./Table";
+import Main from "./Main"
 function App() {
 
   return (
     <>
       <Header />
-      <main className="container">
 
-        <Form/>
-        <Table />
-      </main>
+      <Main form={<Form/>} table={<Table />}/>
     </>
   );
 }

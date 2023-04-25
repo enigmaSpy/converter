@@ -28,7 +28,7 @@ const Form = () => {
 
                 <label className="form__item">
                     <span className="form__itemText">Mam:</span>
-                    <input type="number" name="own" value={value} onChange={({ target }) => setValue(target.value)} className="form__input" min="0" required />
+                    <input type="number" name="own" value={value} onChange={({ target }) => setValue(target.value)} className="form__input" min="0" step="0.01" required />
                 </label>
 
                 <select
@@ -44,7 +44,7 @@ const Form = () => {
                 </select>
 
             </fieldset>
-            <button className="form__reverseButton">💱</button>
+            <button className="form__Button form__Button--reverse">💱</button>
 
             <fieldset className="form__feildset">
                 <label className="form__item">
@@ -64,7 +64,7 @@ const Form = () => {
                 </select>
             </fieldset>
 
-            <button type="submit" className="form__calculate">Przelicz</button>
+            <button type="submit" className="form__Button form__Button--calculate">Przelicz</button>
 
         </form>
     );
