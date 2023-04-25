@@ -14,15 +14,27 @@ const Form = () => {
     };
     const convertValue = () => {
         let result = 0;
-        result = (value * currencyRate[currencyWanted] *currencyRate[currencyOwn])
+        result = (value * currencyRate[currencyWanted] / currencyRate[currencyOwn])
         setConvertedValue(result.toFixed(2));
     }
     const onFormSubmit = (e) => {
         e.preventDefault();
         convertValue();
     }
+
+    const reverseData = (e) => {
+        e.preventDefault();
+        const tempValue = value;
+        setValue(convertedValue);
+        setConvertedValue(tempValue);
+        const temp = currencyOwn;
+        setOvnedCurrency(currencyWanted);
+        setWantedCurrency(temp);
+
+    }
+
     return (
-        <form action="#" className="form" onSubmit={onFormSubmit}>
+        <form action="#" className="form" >
 
             <fieldset className="form__feildset">
 
@@ -44,7 +56,12 @@ const Form = () => {
                 </select>
 
             </fieldset>
-            <button className="form__Button form__Button--reverse">💱</button>
+            <button
+                className="form__Button form__Button--reverse"
+                onClick={reverseData}
+            >
+                💱
+            </button>
 
             <fieldset className="form__feildset">
                 <label className="form__item">
@@ -64,7 +81,7 @@ const Form = () => {
                 </select>
             </fieldset>
 
-            <button type="submit" className="form__Button form__Button--calculate">Przelicz</button>
+            <button type="submit" className="form__Button form__Button--calculate" onClick={onFormSubmit}>Przelicz</button>
 
         </form>
     );
