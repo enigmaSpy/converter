@@ -1,5 +1,5 @@
-import React,{useState, useEffect} from 'react';
-import './style.css';
+import {useState, useEffect} from 'react';
+import { HeaderContent, Title, DateParagraph } from './styled';
 
 const Header = () => {
     const [date, setDate]= useState(new Date().toLocaleString());
@@ -13,10 +13,10 @@ const Header = () => {
     },[date]);
 
     return (
-        <header>
-            <h1 className="header__title">Kantor</h1>
-            <p className='header__data'>{date}</p>
-        </header>
+        <HeaderContent>
+            <Title>Kantor</Title>
+            <DateParagraph>{date}</DateParagraph>
+        </HeaderContent>
     )
 };
 export default Header;

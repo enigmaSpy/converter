@@ -1,9 +1,11 @@
-import './style.css'
+import { MainContent } from "./styled";
+
 const Main = (({form,table})=>(
-    <main className="main">
+    <MainContent>
         {form}
         {table}
-    </main>
+        
+    </MainContent>
 ))
 
 export default Main;

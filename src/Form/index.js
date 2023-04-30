@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import './style.css'
+import { useState } from 'react';
+import ButtonCalc from '../ButtonCalc';
+import { FormContent, FieldSet, Input,Label, InputText, Select,Button } from './styled';
 
 const Form = () => {
     const [value, setValue] = useState("");
@@ -17,7 +18,7 @@ const Form = () => {
         result = (value * currencyRate[currencyWanted] / currencyRate[currencyOwn])
         setConvertedValue(result.toFixed(2));
     }
-    const onFormSubmit = (e) => {
+    const onCalculate = (e) => {
         e.preventDefault();
         convertValue();
     }
@@ -34,56 +35,54 @@ const Form = () => {
     }
 
     return (
-        <form action="#" className="form" >
+      <>
+        <ButtonCalc onClick={onCalculate}/>     
+        <FormContent action="#"  >
 
-            <fieldset className="form__feildset">
+            <FieldSet>
 
-                <label className="form__item">
-                    <span className="form__itemText">Mam:</span>
-                    <input type="number" name="own" value={value} onChange={({ target }) => setValue(target.value)} className="form__input" min="0" step="0.01" required />
-                </label>
+                <Label className="form__item">
+                    <InputText>Mam:</InputText>
+                    <Input type="number" name="own" value={value} onChange={({ target }) => setValue(target.value)} min="0" step="0.01" required />
+                </Label>
 
-                <select
+                <Select
                     aria-label="Wybierz swoją walute"
                     value={currencyOwn}
                     onChange={({ target }) => setOvnedCurrency(target.value)}
-                    name="currencyOwn"
-                    className="form__select">
+                    name="currencyOwn">
                     <option >PLN</option>
                     <option >EUR</option>
                     <option >USD</option>
                     <option >JPY</option>
-                </select>
+                </Select>
 
-            </fieldset>
-            <button
-                className="form__Button form__Button--reverse"
+            </FieldSet>
+            <Button
                 onClick={reverseData}
             >
                 💱
-            </button>
+            </Button>
 
-            <fieldset className="form__feildset">
-                <label className="form__item">
-                    <span className="form__itemText"> Otrzymam: </span>
-                    <input type="number" name="offert" value={convertedValue} className="form__input form__input--valueAfter" disabled />
-                </label>
-                <select
+            <FieldSet>
+                <Label>
+                    <InputText> Otrzymam: </InputText>
+                    <Input type="number" name="offert" value={convertedValue} disabled />
+                </Label>
+                <Select
                     aria-label="Wybierz walute na którą chcesz"
                     value={currencyWanted}
                     onChange={({ target }) => setWantedCurrency(target.value)}
-                    name="currencyOffert"
-                    className="form__select">
+                    name="currencyOffert">
                     <option >PLN</option>
                     <option >EUR</option>
                     <option >USD</option>
                     <option >JPY</option>
-                </select>
-            </fieldset>
-
-            <button type="submit" className="form__Button form__Button--calculate" onClick={onFormSubmit}>Przelicz</button>
-
-        </form>
+                </Select>
+            </FieldSet>
+            
+        </FormContent>
+       </>
     );
 }
 export default Form;
